@@ -2,10 +2,10 @@
 title: "Boosting Small Object Tracking via Collaborative Detection Transformer"
 collection: publications
 category: manuscripts
-permalink: /publication/2009-10-01-paper-title-number-1
-excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
-date: 2009-10-01
-venue: 'International Conference on Machine Vision and Applications (MVA) Oral, 2025'
+permalink: /publication/boosting_small_object_tracking_via_collaborative_detection_transformer.md
+# excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
+date: 2025
+venue: 'International Conference on Machine Vision and Applications (MVA) Oral'
 # slidesurl: 'https://academicpages.github.io/files/slides1.pdf'
 # paperurl: 'https://academicpages.github.io/files/paper1.pdf'
 # bibtexurl: 'https://academicpages.github.io/files/bibtex1.bib'
