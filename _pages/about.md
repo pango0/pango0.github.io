@@ -10,8 +10,6 @@ redirect_from:
 ## About me
 My name is Jui-Chien Tsou, but you can call me Eric. I am currently an undergraduate student studying computer science at National Taiwan University, expecting to graduate in June 2026. My research focuses on parallel programming, HPC, and LLMs.
 
-You can find my CV [here](files/cv.pdf).
-
 ## Publications
 
 [Boosting Small Object Tracking via Collaborative Detection Transformer](https://ieeexplore.ieee.org/abstract/document/11175122)  

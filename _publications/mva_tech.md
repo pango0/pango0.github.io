@@ -2,7 +2,7 @@
 title: "MVA 2025 Small Multi-Object Tracking for Spotting Birds Challenge"
 collection: publications
 category: manuscripts
-permalink: /publication/mva_tech/
+permalink: /publication/mva_tech
 excerpt: ''
 date: 2025-07-17
 venue: 'International Conference on Machine Vision and Applications (MVA)'

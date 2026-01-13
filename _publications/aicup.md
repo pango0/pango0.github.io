@@ -2,7 +2,7 @@
 title: "Instruction-Tuned LLMs for Multilingual Medical ASR and Privacy Entity Extraction"
 collection: publications
 category: manuscripts
-permalink: /publication/aicup/
+permalink: /publication/aicup
 excerpt: ''
 date: 2025-08-10
 venue: 'The 20th World Congress on Medical and Health Informatics (MEDINFO) Workshop'
