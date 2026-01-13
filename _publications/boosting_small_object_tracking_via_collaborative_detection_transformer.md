@@ -4,7 +4,7 @@ collection: publications
 category: manuscripts
 permalink: /publication/boosting_small_object_tracking_via_collaborative_detection_transformer.md
 # excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
-date: 2025
+date: 2025-09-26
 venue: 'International Conference on Machine Vision and Applications (MVA) Oral'
 # slidesurl: 'https://academicpages.github.io/files/slides1.pdf'
 # paperurl: 'https://academicpages.github.io/files/paper1.pdf'

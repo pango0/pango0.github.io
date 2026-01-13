@@ -4,7 +4,7 @@ collection: publications
 category: manuscripts
 permalink: /publication/aicup.md
 # excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
-date: 2025
+date: 2025-08-10
 venue: 'The 20th World Congress on Medical and Health Informatics (MEDINFO) Workshop'
 # slidesurl: 'https://academicpages.github.io/files/slides1.pdf'
 # paperurl: 'https://academicpages.github.io/files/paper1.pdf'
