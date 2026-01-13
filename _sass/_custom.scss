@@ -1,0 +1,38 @@
+.awards {
+  margin-top: 1em;
+}
+
+.award-item {
+  margin-bottom: 1.2em;
+}
+
+.award-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.award-title {
+  font-weight: 600;
+}
+
+.award-meta {
+  text-align: right;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.award-rank {
+  color: #1a4fff;
+  font-weight: 500;
+  margin: 0.2em 0 0.3em 0;
+}
+
+.award-item ul {
+  margin-top: 0.2em;
+  margin-bottom: 0;
+}
+
+.award-item li {
+  margin-bottom: 0.2em;
+}
