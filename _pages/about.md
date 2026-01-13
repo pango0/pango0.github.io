@@ -1,6 +1,7 @@
 ---
 permalink: /
-author_profile: false
+title: "Hello! I'm Eric!
+author_profile: true
 redirect_from: 
   - /about/
   - /about.html
