@@ -1,3 +1,9 @@
+---
+layout: archive
+title: "Competitions and Awards"
+permalink: /awards/
+author_profile: true
+---
 <section class="awards">
 
   <div class="award-item">
