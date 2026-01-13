@@ -3,7 +3,7 @@ title: "MVA 2025 Small Multi-Object Tracking for Spotting Birds Challenge"
 collection: publications
 category: manuscripts
 permalink: /publication/mva_tech.md
-# excerpt: 'This paper is about the number 2. The number 3 is left for future work.'
+excerpt: ''
 date: 2025-07-17
 venue: 'International Conference on Machine Vision and Applications (MVA)'
 # slidesurl: 'https://academicpages.github.io/files/slides2.pdf'

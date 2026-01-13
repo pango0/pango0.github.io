@@ -3,7 +3,7 @@ title: "Instruction-Tuned LLMs for Multilingual Medical ASR and Privacy Entity E
 collection: publications
 category: manuscripts
 permalink: /publication/aicup.md
-# excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
+excerpt: ''
 date: 2025-08-10
 venue: 'The 20th World Congress on Medical and Health Informatics (MEDINFO) Workshop'
 # slidesurl: 'https://academicpages.github.io/files/slides1.pdf'
@@ -11,6 +11,7 @@ venue: 'The 20th World Congress on Medical and Health Informatics (MEDINFO) Work
 # bibtexurl: 'https://academicpages.github.io/files/bibtex1.bib'
 # citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
 ---
+## Abstract:
 In this study, we propose a comprehensive framework for sensitive information recognition in bilingual doctor-patient speech, developed
 for the AI CUP 2025 Spring Challenge. The task consists of two subtasks:
 automatic speech recognition (ASR) and named entity recognition
