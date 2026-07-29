@@ -96,12 +96,12 @@ const { title, description } = Astro.props;
             el.textContent = target.toFixed(decimals) + suffix;
             return;
           }
-          var duration = 900;
+          var duration = 2200;
           var start = null;
           function step(ts) {
             if (!start) start = ts;
             var progress = Math.min((ts - start) / duration, 1);
-            var eased = 1 - Math.pow(1 - progress, 3);
+            var eased = 1 - Math.pow(1 - progress, 2);
             el.textContent = (target * eased).toFixed(decimals) + suffix;
             if (progress < 1) requestAnimationFrame(step);
           }
