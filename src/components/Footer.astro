@@ -1,0 +1,12 @@
+---
+import { links } from '../data/links';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-20 border-t border-border pt-8 pb-4 text-xs text-muted">
+  <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+    <p>&copy; {year} {links.name}</p>
+    <a href={`mailto:${links.email}`} class="font-mono hover:text-accent">{links.email}</a>
+  </div>
+</footer>
