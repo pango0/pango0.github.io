@@ -34,7 +34,9 @@ const { title, description } = Astro.props;
     </script>
   </head>
   <body class="bg-bg text-ink antialiased">
-    <div class="h-1 w-full bg-accent"></div>
+    <div class="sticky top-0 z-30 h-[3px] w-full bg-border/60">
+      <div id="scroll-progress" class="h-full w-0 bg-accent"></div>
+    </div>
     <div class="mx-auto max-w-6xl px-6 py-12 lg:py-16">
       <div class="flex flex-col gap-12 lg:flex-row lg:gap-16">
         <Sidebar />
@@ -61,6 +63,68 @@ const { title, description } = Astro.props;
         );
         targets.forEach(function (el) {
           observer.observe(el);
+        });
+      })();
+    </script>
+    <script is:inline>
+      (function () {
+        var bar = document.getElementById('scroll-progress');
+        if (!bar) return;
+        function update() {
+          var scrollTop = window.scrollY || document.documentElement.scrollTop;
+          var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          var pct = height > 0 ? (scrollTop / height) * 100 : 0;
+          bar.style.width = pct + '%';
+        }
+        update();
+        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+      })();
+    </script>
+    <script is:inline>
+      (function () {
+        var els = document.querySelectorAll('[data-count-to]');
+        if (!els.length) return;
+        var reduceMotion =
+          window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        function animateCount(el) {
+          var target = parseFloat(el.getAttribute('data-count-to'));
+          var suffix = el.getAttribute('data-count-suffix') || '';
+          var decimals = parseInt(el.getAttribute('data-count-decimals') || '0', 10);
+          if (reduceMotion) {
+            el.textContent = target.toFixed(decimals) + suffix;
+            return;
+          }
+          var duration = 900;
+          var start = null;
+          function step(ts) {
+            if (!start) start = ts;
+            var progress = Math.min((ts - start) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = (target * eased).toFixed(decimals) + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        }
+
+        if (!('IntersectionObserver' in window)) {
+          els.forEach(animateCount);
+          return;
+        }
+        var countObserver = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                animateCount(entry.target);
+                countObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.4 }
+        );
+        els.forEach(function (el) {
+          countObserver.observe(el);
         });
       })();
     </script>
