@@ -8,6 +8,15 @@ export interface Experience {
 
 export const experience: Experience[] = [
   {
+    role: 'Undergraduate Researcher',
+    org: 'ElsaLab, NTU CSIE — Advisor: Prof. Chun-Yi Lee',
+    location: 'Taipei, Taiwan',
+    period: 'Sep 2024 – Present',
+    bullets: [
+      'Conduct systems and ML research spanning LLM inference acceleration, distributed training, and GPU/HPC performance optimization.',
+    ],
+  },
+  {
     role: 'Cloud Application Researcher',
     org: 'Quanta Cloud Technology (Fortune Global 500)',
     location: 'Taoyuan, Taiwan',
