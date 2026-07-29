@@ -8,7 +8,10 @@ import { research } from '../data/research';
   <SectionHeading title="Research Projects" />
   <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
     {research.map((project) => (
-      <article class="rounded-lg border border-border bg-surface p-5">
+      <article
+        tabindex="0"
+        class="group rounded-lg border border-border bg-surface p-5 outline-none transition-colors hover:border-accent/40 focus-visible:border-accent/40"
+      >
         <div class="flex items-start justify-between gap-3">
           <h3 class="text-sm font-bold leading-snug text-ink">{project.title}</h3>
           {project.metric && (
@@ -20,7 +23,7 @@ import { research } from '../data/research';
         <p class="mt-1 text-xs text-muted">{project.org}</p>
         <p class="mt-0.5 font-mono text-[11px] text-muted">{project.period}</p>
         <p class="mt-3 text-sm leading-relaxed text-muted">{project.description}</p>
-        <ul class="mt-3 space-y-1.5">
+        <ul class="mt-3 max-h-0 space-y-1.5 overflow-hidden opacity-0 transition-all duration-300 ease-out group-hover:max-h-96 group-hover:opacity-100 group-focus-within:max-h-96 group-focus-within:opacity-100">
           {project.bullets.map((bullet) => (
             <li class="flex gap-2 text-xs leading-relaxed text-muted">
               <span class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent"></span>
