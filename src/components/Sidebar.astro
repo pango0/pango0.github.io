@@ -1,6 +1,16 @@
 ---
 import Avatar from './Avatar.astro';
 import { links } from '../data/links';
+
+const sections: [string, string][] = [
+  ['about', 'About'],
+  ['research', 'Research'],
+  ['publications', 'Publications'],
+  ['competitions', 'Awards'],
+  ['experience', 'Experience'],
+  ['skills', 'Skills'],
+  ['education', 'Education'],
+];
 ---
 
 <aside data-animate class="w-full shrink-0 lg:sticky lg:top-12 lg:w-[260px] lg:self-start">
@@ -25,6 +35,22 @@ import { links } from '../data/links';
       <dd class="font-mono text-ink">2026</dd>
     </div>
   </dl>
+
+  <nav aria-label="Sections" class="mt-6 border-t border-border pt-6">
+    <ul class="flex flex-wrap gap-x-4 gap-y-2.5 lg:flex-col">
+      {sections.map(([id, label]) => (
+        <li>
+          <a
+            data-nav-link
+            href={`#${id}`}
+            class="font-mono text-[11px] uppercase tracking-widest text-muted transition-colors hover:text-accent"
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
 
   <div class="mt-6 flex items-center gap-3 border-t border-border pt-6">
     <a

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pango0.github.io/sitemap-index.xml

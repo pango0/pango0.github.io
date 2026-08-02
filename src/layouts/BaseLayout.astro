@@ -16,6 +16,24 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL('/og.png', Astro.site);
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Jui-Chien Tsou',
+  alternateName: 'Eric Tsou',
+  url: Astro.site?.toString(),
+  image: new URL('/avatar.jpeg', Astro.site).toString(),
+  email: 'mailto:tsouoeric@gmail.com',
+  jobTitle: 'Undergraduate Researcher',
+  affiliation: {
+    '@type': 'CollegeOrUniversity',
+    name: 'National Taiwan University',
+  },
+  sameAs: ['https://github.com/pango0'],
+};
 ---
 
 <!doctype html>
@@ -26,9 +44,20 @@ const { title, description } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#FAFAF9" />
+    <link rel="canonical" href={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
     <script is:inline>
       document.documentElement.classList.add('js-anim');
     </script>
@@ -63,6 +92,37 @@ const { title, description } = Astro.props;
         );
         targets.forEach(function (el) {
           observer.observe(el);
+        });
+      })();
+    </script>
+    <script is:inline>
+      (function () {
+        var links = document.querySelectorAll('[data-nav-link]');
+        if (!links.length || !('IntersectionObserver' in window)) return;
+        var byId = {};
+        links.forEach(function (link) {
+          byId[link.getAttribute('href').slice(1)] = link;
+        });
+        var current = null;
+        var navObserver = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting && byId[entry.target.id]) {
+                if (current) {
+                  current.classList.remove('is-active');
+                  current.removeAttribute('aria-current');
+                }
+                current = byId[entry.target.id];
+                current.classList.add('is-active');
+                current.setAttribute('aria-current', 'true');
+              }
+            });
+          },
+          { rootMargin: '-15% 0px -70% 0px' }
+        );
+        Object.keys(byId).forEach(function (id) {
+          var section = document.getElementById(id);
+          if (section) navObserver.observe(section);
         });
       })();
     </script>
