@@ -12,12 +12,14 @@ function splitMetric(metric: string) {
 }
 ---
 
-<section id="research" data-animate>
+<section id="research">
   <SectionHeading title="Research Projects" />
   <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
-    {research.map((project) => (
+    {research.map((project, index) => (
       <article
         tabindex="0"
+        data-animate
+        style={`--reveal-delay: ${Math.min(index * 0.08, 0.4)}s`}
         class="group rounded-lg border border-border bg-surface p-5 outline-none transition-all duration-200 ease-out hover:-translate-y-1 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5 focus-visible:-translate-y-1 focus-visible:border-accent/40 focus-visible:shadow-lg focus-visible:shadow-accent/5"
       >
         <div class="flex items-start justify-between gap-3">

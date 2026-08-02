@@ -15,7 +15,7 @@ const { initials, name, src, size = 96 } = Astro.props;
     alt={name}
     width={size}
     height={size}
-    class="rounded-full object-cover"
+    class="rounded-full object-cover transition-transform duration-300 hover:scale-[1.03]"
     style={`width:${size}px;height:${size}px;`}
   />
 ) : (

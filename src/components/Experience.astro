@@ -3,11 +3,15 @@ import SectionHeading from './SectionHeading.astro';
 import { experience } from '../data/experience';
 ---
 
-<section id="experience" data-animate>
+<section id="experience">
   <SectionHeading title="Experience" />
   <div class="ml-1 space-y-6 border-l border-border pl-6">
-    {experience.map((job) => (
-      <article class="relative">
+    {experience.map((job, index) => (
+      <article
+        class="relative"
+        data-animate
+        style={`--reveal-delay: ${Math.min(index * 0.08, 0.4)}s`}
+      >
         <span class="absolute -left-[29px] top-1.5 h-2 w-2 rounded-full bg-accent"></span>
         <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
           <h3 class="text-sm font-bold text-ink">{job.role}</h3>

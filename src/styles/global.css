@@ -26,22 +26,58 @@ section[id] {
 @media (prefers-reduced-motion: no-preference) {
   html.js-anim [data-animate] {
     opacity: 0;
-    transform: translateY(16px);
-    transition:
-      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   html.js-anim [data-animate].is-visible {
     opacity: 1;
-    transform: translateY(0);
+    animation: reveal-rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: var(--reveal-delay, 0s);
+  }
+
+  @keyframes reveal-rise {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
   }
 
   html.js-anim [data-animate-delay='1'] {
-    transition-delay: 0.1s;
+    --reveal-delay: 0.1s;
   }
 
   html.js-anim [data-animate-delay='2'] {
-    transition-delay: 0.2s;
+    --reveal-delay: 0.2s;
   }
+
+  /* Section heading underline draws in just after its heading appears */
+  html.js-anim [data-animate] .heading-rule {
+    width: 0;
+    transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--reveal-delay, 0s) + 0.25s);
+  }
+
+  html.js-anim [data-animate].is-visible .heading-rule {
+    width: 2.5rem;
+  }
+}
+
+[data-nav-link] {
+  position: relative;
+}
+
+[data-nav-link]::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 100%;
+  background-color: #2952e3;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+[data-nav-link]:hover::after,
+[data-nav-link].is-active::after {
+  transform: scaleX(1);
 }
