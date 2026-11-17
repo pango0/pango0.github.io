@@ -7,6 +7,7 @@ export interface Publication {
   description: string;
   link?: string;
   image?: string;
+  imageAlt?: string;
 }
 
 export const publications: Publication[] = [
@@ -20,7 +21,9 @@ export const publications: Publication[] = [
     description:
       'Developed TeCoP, a training-free pipelined decoder for diffusion LLMs that achieves up to 87% fewer forward passes and 11.77x throughput within a 1 percent accuracy drop on average.',
     link: 'https://arxiv.org/abs/2610.27583',
-    image: '/papers/2610.27583.png',
+    image: '/papers/tecop-figure.png',
+    imageAlt:
+      'TeCoP figure: per-token decoding-step maps versus Fast-dLLM and DSB, and GSM8K accuracy versus throughput showing 7.9x faster LLaDA and 4.9x faster Dream with TeCoP.',
   },
   {
     title: 'Correct First, Fast Second: What a Local 7B Code Model Can and Cannot Do for GPU Kernel Optimization',
@@ -31,7 +34,9 @@ export const publications: Publication[] = [
     description:
       'Studies how the interaction strategy around a fixed, locally hosted 7B code model (Qwen2.5-Coder-7B-Instruct) affects its ability to replace PyTorch operators with custom CUDA kernels.',
     link: 'https://arxiv.org/abs/2611.12079',
-    image: '/papers/2611.12079.png',
+    image: '/papers/correct-first-figure.png',
+    imageAlt:
+      'System diagram of the agentic loop: Code Analyzer, RAG Researcher, and Kernel Generator roles feed a non-LLM Evaluator, with a Feedback Triager closing the regenerate loop.',
   },
   {
     title: 'Boosting Small Object Tracking via Collaborative Detection Transformer',
