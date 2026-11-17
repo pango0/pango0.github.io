@@ -8,10 +8,19 @@ export interface Experience {
 
 export const experience: Experience[] = [
   {
+    role: 'AI Application Researcher — COOL AI Companion',
+    org: 'National Taiwan University, Mentor: Prof. Hsin-Mu Tsai',
+    location: 'Taipei, Taiwan',
+    period: 'Jul 2026 – Present',
+    bullets: [
+      "Sole desktop-client engineer of the COOL AI Companion, an AI lecture companion for NTU COOL officially released by NTU's Digital Learning Center to a 35,000-student campus.",
+    ],
+  },
+  {
     role: 'Cloud Application Researcher',
     org: 'Quanta Cloud Technology (Fortune Global 500)',
     location: 'Taoyuan, Taiwan',
-    period: 'Jul 2024 – Aug 2024',
+    period: 'Jul 2025 – Aug 2025',
     bullets: [
       'Developed and simulated vision-language-action (VLA) models like GR00T for humanoid robot control in cloud-based simulation environments (Isaac Sim).',
     ],
@@ -29,7 +38,7 @@ export const experience: Experience[] = [
     role: 'Research Assistant',
     org: 'Academia Sinica, Mentor: Prof. Yuh-Jye Lee',
     location: 'Taipei, Taiwan',
-    period: 'Jul 2023 – Aug 2023',
+    period: 'Jul 2024 – Aug 2024',
     bullets: [
       'Built persona agentic LLM systems with autonomous reasoning, planning, and external tool interaction using LangChain.',
     ],

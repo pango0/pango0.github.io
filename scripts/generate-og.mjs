@@ -15,8 +15,8 @@ const svg = `<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http:/
     <text x="195" y="486" fill="#2952E3">777x speedup</text>
     <rect x="330" y="450" width="320" height="56" rx="28" fill="#2952E3" fill-opacity="0.05" stroke="#2952E3" stroke-opacity="0.3"/>
     <text x="490" y="486" fill="#2952E3">SC25 Overall Winner</text>
-    <rect x="670" y="450" width="250" height="56" rx="28" fill="#2952E3" fill-opacity="0.05" stroke="#2952E3" stroke-opacity="0.3"/>
-    <text x="795" y="486" fill="#2952E3">2 publications</text>
+    <rect x="670" y="450" width="220" height="56" rx="28" fill="#2952E3" fill-opacity="0.05" stroke="#2952E3" stroke-opacity="0.3"/>
+    <text x="780" y="486" fill="#2952E3">4 papers</text>
   </g>
 
   <text x="80" y="580" font-family="Menlo, Consolas, monospace" font-size="22" fill="#5B5F6B">pango0.github.io</text>

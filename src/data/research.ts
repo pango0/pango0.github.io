@@ -10,17 +10,17 @@ export interface ResearchProject {
 
 export const research: ResearchProject[] = [
   {
-    title: 'Parallel Decoding with Diffusion Large Language Models',
+    title: 'Accelerating Diffusion LLM Decoding via Tentative Context Pipelining',
     org: 'NTU CSIE, Advisor: Prof. Chun-Yi Lee',
-    period: 'Jan 2026 – Current',
+    period: 'Jan 2026 – Oct 2026',
     description:
-      'A training-free method that exploits decoding deficiency to speed up diffusion LLM inference.',
+      'Proposed tentative context — reusing stable but uncommitted predictions as provisional context — the core idea behind TeCoP (co-first author).',
     bullets: [
-      'Improved tokens-per-second over 5x, surpassing baselines across multiple datasets.',
-      'Parallelized intra-block decoding and improved decoding heuristics, achieving near 6 tokens per forward pass.',
+      'TeCoP is a training-free pipelined decoder for diffusion LLMs; results published under Publications.',
+      'Achieves up to 87% fewer forward passes and 11.77x throughput within a 1 percent accuracy drop on average.',
     ],
     tags: ['LLM Inference', 'Diffusion Models', 'Python'],
-    metric: '5x',
+    metric: '11.77x',
   },
   {
     title: 'Accelerating an Exascale Climate Emulator',
@@ -29,8 +29,8 @@ export const research: ResearchProject[] = [
     description:
       'A next-generation climate emulator built for GPU mixed-precision computing on a multi-GPU cluster.',
     bullets: [
-      'Achieved a 777x speedup in climate simulation via mixed-precision computing and a distributed architecture.',
-      'Scaled the emulator toward exascale performance, enabling high-fidelity modeling of extreme-weather and climate-policy scenarios.',
+      "Accelerated the emulator's tile-based Cholesky factorization 777x over a 112-core CPU baseline (2.47 PFLOPS, 119.8x energy efficiency) with cuBLASLt, tile-level mixed precision, and tile-size and CUDA-stream tuning.",
+      'Profiled the application and optimized its core numerical computations.',
     ],
     tags: ['CUDA', 'Distributed Systems', 'HPC'],
     metric: '777x',

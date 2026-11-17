@@ -14,7 +14,7 @@ export const competitions: Competition[] = [
     period: 'Nov 2025',
     bullets: [
       'Won first place overall among 8 invited international teams, including UC San Diego, ETH Zürich, and Nanyang Technological University, at the premier student supercomputing contest at SC25.',
-      'Led on-site cluster deployment and implemented multi-node MLPerf Inference (Llama2-70B), covering system optimization, CPU/GPU profiling, and performance tuning.',
+      'Led on-site cluster deployment and the multi-node MLPerf Inference implementation (Llama2-70B); worked on HPL. The team recorded the top HPL (561 TFLOPS under 10 kW) and MLPerf Inference scores.',
     ],
   },
   {
