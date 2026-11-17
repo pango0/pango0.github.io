@@ -55,5 +55,8 @@ export const publications: Publication[] = [
     year: '2025',
     description:
       'Built a parallelized ASR–LLM pipeline combining fine-tuned speech models with instruction-tuned LLM orchestration for multilingual medical transcription and privacy-entity extraction.',
+    image: '/papers/medinfo-figure.png',
+    imageAlt:
+      'Pipeline figure: prompting with Qwen3-32B-Instruct versus QLoRA fine-tuning of gemma-3-27b, Llama-3-Taiwan-8B, and Qwen2.5-32B-Instruct on split categories, producing structured privacy-entity answers.',
   },
 ];
