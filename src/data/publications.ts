@@ -47,6 +47,9 @@ export const publications: Publication[] = [
     note: 'Oral',
     description:
       'Co-developed CHAT, a small-object tracking pipeline integrating Co-DETR, SAHI, and BoostTrack++, achieving superior identity preservation on the SMOT4SB benchmark; selected for oral presentation.',
+    image: '/papers/mva-figure.png',
+    imageAlt:
+      'CHAT pipeline figure: training stages with copy-paste augmentation of the cropped SMOT4SB dataset feeding Co-DETR, and an inference pipeline running SAHI tiling through Co-DETR and BoostTrack++.',
   },
   {
     title: 'Instruction-Tuned LLMs for Multilingual Medical ASR and Privacy Entity Extraction',
