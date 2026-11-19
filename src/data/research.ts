@@ -20,7 +20,7 @@ export const research: ResearchProject[] = [
       'Achieves up to 87% fewer forward passes and 11.77x throughput within a 1 percent accuracy drop on average.',
     ],
     tags: ['LLM Inference', 'Diffusion Models', 'Python'],
-    metric: '11.77x',
+    metric: '11.77×',
   },
   {
     title: 'Accelerating an Exascale Climate Emulator',
@@ -33,7 +33,7 @@ export const research: ResearchProject[] = [
       'Profiled the application and optimized its core numerical computations.',
     ],
     tags: ['CUDA', 'Distributed Systems', 'HPC'],
-    metric: '777x',
+    metric: '777×',
   },
   {
     title: 'Parallel Influence Maximization on HPC Systems',
@@ -46,7 +46,7 @@ export const research: ResearchProject[] = [
       'Analyzed scaling bottlenecks on a 768-core AMD EPYC cluster, identifying the transition from compute-bound to communication-bound phases in global All-Reduce operations.',
     ],
     tags: ['C++', 'OpenMPI', 'Graph Algorithms'],
-    metric: '15.3x',
+    metric: '15.3×',
   },
   {
     title: 'Distributed LLM Inference across Heterogeneous CPU and GPU',
@@ -59,6 +59,6 @@ export const research: ResearchProject[] = [
       'Achieved a 3x inference latency speedup on Intel Xeon CPUs using AVX-512, AMX-BF16, and NUMA-aware thread placement.',
     ],
     tags: ['Quantization', 'AVX-512', 'CPU Inference'],
-    metric: '15x',
+    metric: '15×',
   },
 ];

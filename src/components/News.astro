@@ -5,14 +5,14 @@ import { news } from '../data/news';
 
 <section id="news">
   <SectionHeading title="News" />
-  <ul class="space-y-3">
+  <ul class="space-y-3.5">
     {news.map((item, index) => (
       <li
         data-animate
         style={`--reveal-delay: ${Math.min(index * 0.06, 0.3)}s`}
-        class="flex gap-4"
+        class="flex gap-5"
       >
-        <span class="w-20 shrink-0 pt-0.5 font-mono text-[11px] font-medium text-accent">
+        <span class="w-[72px] shrink-0 pt-0.5 font-mono text-[11px] text-muted">
           {item.date}
         </span>
         {item.link ? (
@@ -20,12 +20,12 @@ import { news } from '../data/news';
             href={item.link}
             target="_blank"
             rel="noreferrer"
-            class="text-sm leading-relaxed text-muted transition-colors hover:text-accent"
+            class="text-sm leading-relaxed text-body transition-colors hover:text-accent"
           >
-            {item.text} <span aria-hidden="true">&#8599;</span>
+            {item.text} <span aria-hidden="true" class="text-accent">&#8599;</span>
           </a>
         ) : (
-          <span class="text-sm leading-relaxed text-muted">{item.text}</span>
+          <span class="text-sm leading-relaxed text-body">{item.text}</span>
         )}
       </li>
     ))}

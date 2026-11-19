@@ -1,14 +1,47 @@
 ---
+import { stats } from '../data/stats';
+
+function splitMetric(metric: string) {
+  const match = metric.match(/^([\d.]+)(.*)$/);
+  if (!match) return null;
+  const [, value, suffix] = match;
+  const decimals = value.includes('.') ? value.split('.')[1].length : 0;
+  return { value, suffix, decimals };
+}
 ---
 
 <section data-animate data-animate-delay="1" class="pt-1">
-  <h2 class="text-3xl font-extrabold uppercase leading-[1.12] tracking-tight text-ink sm:text-4xl lg:text-[2.75rem]">
+  <h2 class="text-3xl font-extrabold leading-[1.1] tracking-[-0.025em] text-ink sm:text-4xl lg:text-[2.875rem]">
     HPC &amp; ML systems research.
   </h2>
-  <p class="mt-5 max-w-xl text-base leading-relaxed text-muted">
+  <p class="mt-5 max-w-[620px] text-base leading-relaxed text-body">
     Computer Science senior at National Taiwan University heading into an MSCS. I build and
     accelerate systems at the edge of parallel computing and LLM inference, from multi-GPU
-    clusters to diffusion-model decoding. I have led competition teams to first-place finishes
-    on the international stage.
+    clusters to diffusion-model decoding, and I have led competition teams to first-place
+    finishes on the international stage.
   </p>
+  <div class="mt-10 grid grid-cols-2 gap-6 border-y border-border py-6 lg:grid-cols-4">
+    {stats.map((stat) => {
+      const parts = stat.animate ? splitMetric(stat.value) : null;
+      return (
+        <div>
+          {parts ? (
+            <div
+              data-count-to={parts.value}
+              data-count-suffix={parts.suffix}
+              data-count-decimals={parts.decimals}
+              class="font-mono text-[27px] font-semibold tracking-tight text-ink"
+            >
+              {parts.decimals > 0 ? `0.${'0'.repeat(parts.decimals)}` : '0'}{parts.suffix}
+            </div>
+          ) : (
+            <div class="font-mono text-[27px] font-semibold tracking-tight text-ink">{stat.value}</div>
+          )}
+          <div class="mt-1.5 text-[11px] font-semibold uppercase tracking-wide leading-snug text-muted">
+            {stat.label}
+          </div>
+        </div>
+      );
+    })}
+  </div>
 </section>

@@ -14,18 +14,13 @@ import { experience } from '../data/experience';
       >
         <span class="absolute -left-[29px] top-1.5 h-2 w-2 rounded-full bg-accent"></span>
         <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-          <h3 class="text-sm font-bold text-ink">{job.role}</h3>
+          <h3 class="text-sm font-semibold text-ink">{job.role}</h3>
           <span class="font-mono text-[11px] text-muted">{job.period}</span>
         </div>
         <p class="mt-0.5 text-xs text-muted">{job.org} · {job.location}</p>
-        <ul class="mt-2 space-y-1.5">
-          {job.bullets.map((bullet) => (
-            <li class="flex gap-2 text-xs leading-relaxed text-muted">
-              <span class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent"></span>
-              <span>{bullet}</span>
-            </li>
-          ))}
-        </ul>
+        {job.bullets.map((bullet) => (
+          <p class="mt-2 text-[13px] leading-relaxed text-body">{bullet}</p>
+        ))}
       </article>
     ))}
   </div>

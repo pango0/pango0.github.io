@@ -17,6 +17,15 @@ export const experience: Experience[] = [
     ],
   },
   {
+    role: 'Teaching Assistant — CSIE5213 Parallel Programming',
+    org: 'Dept. of CSIE, NTU',
+    location: 'Taipei, Taiwan',
+    period: 'Sep 2025 – Dec 2025',
+    bullets: [
+      'Designed and graded a parallel programming assignment and instructed students on the use of high-performance computing clusters.',
+    ],
+  },
+  {
     role: 'Cloud Application Researcher',
     org: 'Quanta Cloud Technology (Fortune Global 500)',
     location: 'Taoyuan, Taiwan',
@@ -41,15 +50,6 @@ export const experience: Experience[] = [
     period: 'Jul 2024 – Aug 2024',
     bullets: [
       'Built persona agentic LLM systems with autonomous reasoning, planning, and external tool interaction using LangChain.',
-    ],
-  },
-  {
-    role: 'Teaching Assistant — CSIE5213 Parallel Programming',
-    org: 'Dept. of CSIE, NTU',
-    location: 'Taipei, Taiwan',
-    period: 'Sep 2025 – Dec 2025',
-    bullets: [
-      'Designed and graded a parallel programming assignment and instructed students on the use of high-performance computing clusters.',
     ],
   },
   {
