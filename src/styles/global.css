@@ -23,6 +23,54 @@ section[id] {
   color: #2952e3;
 }
 
+/* Masked hero headline: the inner line slides up from behind the outer clip.
+   Padding/negative-margin pair keeps ascenders and descenders unclipped. */
+.mask-line {
+  display: block;
+  overflow: hidden;
+  padding: 0.12em 0 0.16em;
+  margin: -0.12em 0 -0.16em;
+}
+
+.mask-inner {
+  display: block;
+}
+
+/* Odometer digits: each digit is a clipped 1em column holding a 0–9 strip
+   that rolls vertically. Mono font keeps columns fixed-width. */
+.odo {
+  display: inline-flex;
+  line-height: 1;
+}
+
+.odo-col {
+  display: block;
+  height: 1em;
+  overflow: hidden;
+}
+
+.odo-strip {
+  display: block;
+  transition: transform 1.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.odo-digit,
+.odo-sep {
+  display: block;
+  height: 1em;
+}
+
+/* Sliding sidebar nav marker (desktop only; positioned by BaseLayout script) */
+#nav-marker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 14px;
+  width: 2px;
+  background-color: #2952e3;
+  opacity: 0;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   html.js-anim [data-animate] {
     opacity: 0;
@@ -38,6 +86,7 @@ section[id] {
     from {
       opacity: 0;
       transform: translateY(16px);
+      filter: blur(5px);
     }
   }
 
@@ -58,6 +107,21 @@ section[id] {
   html.js-anim [data-animate].is-visible .heading-rule {
     width: 2.5rem;
   }
+
+  html.js-anim .mask-inner {
+    transform: translateY(135%);
+    animation: mask-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+  }
+
+  @keyframes mask-rise {
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  #nav-marker {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  }
 }
 
 [data-nav-link] {
@@ -77,7 +141,6 @@ section[id] {
   transition: transform 0.25s ease;
 }
 
-[data-nav-link]:hover::after,
-[data-nav-link].is-active::after {
+[data-nav-link]:hover::after {
   transform: scaleX(1);
 }

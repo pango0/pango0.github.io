@@ -4,6 +4,14 @@ import { competitions } from '../data/competitions';
 
 const featured = competitions.find((c) => c.featured);
 const rest = competitions.filter((c) => !c.featured);
+
+function splitMetric(metric: string) {
+  const match = metric.match(/^([\d.]+)(.*)$/);
+  if (!match) return null;
+  const [, value, suffix] = match;
+  const decimals = value.includes('.') ? value.split('.')[1].length : 0;
+  return { value, suffix, decimals };
+}
 ---
 
 <section id="competitions">
@@ -23,14 +31,28 @@ const rest = competitions.filter((c) => !c.featured);
         </div>
         {featured.highlights && (
           <div class="flex shrink-0 gap-8">
-            {featured.highlights.map((highlight) => (
-              <div>
-                <div class="font-mono text-xl font-semibold">{highlight.value}</div>
-                <div class="mt-1.5 max-w-[140px] text-[10.5px] font-semibold uppercase tracking-wide leading-snug text-[#8E919B]">
-                  {highlight.label}
+            {featured.highlights.map((highlight) => {
+              const parts = splitMetric(highlight.value);
+              return (
+                <div>
+                  {parts ? (
+                    <div
+                      data-count-to={parts.value}
+                      data-count-suffix={parts.suffix}
+                      data-count-decimals={parts.decimals}
+                      class="font-mono text-xl font-semibold leading-none"
+                    >
+                      {highlight.value}
+                    </div>
+                  ) : (
+                    <div class="font-mono text-xl font-semibold leading-none">{highlight.value}</div>
+                  )}
+                  <div class="mt-1.5 max-w-[140px] text-[10.5px] font-semibold uppercase tracking-wide leading-snug text-[#8E919B]">
+                    {highlight.label}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>

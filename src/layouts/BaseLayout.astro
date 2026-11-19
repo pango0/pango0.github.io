@@ -102,11 +102,18 @@ const personSchema = {
       (function () {
         var links = document.querySelectorAll('[data-nav-link]');
         if (!links.length || !('IntersectionObserver' in window)) return;
+        var marker = document.getElementById('nav-marker');
         var byId = {};
         links.forEach(function (link) {
           byId[link.getAttribute('href').slice(1)] = link;
         });
         var current = null;
+        function moveMarker() {
+          if (!marker || !current) return;
+          marker.style.opacity = '1';
+          marker.style.transform =
+            'translateY(' + (current.offsetTop + (current.offsetHeight - 14) / 2) + 'px)';
+        }
         var navObserver = new IntersectionObserver(
           function (entries) {
             entries.forEach(function (entry) {
@@ -118,6 +125,7 @@ const personSchema = {
                 current = byId[entry.target.id];
                 current.classList.add('is-active');
                 current.setAttribute('aria-current', 'true');
+                moveMarker();
               }
             });
           },
@@ -127,6 +135,7 @@ const personSchema = {
           var section = document.getElementById(id);
           if (section) navObserver.observe(section);
         });
+        window.addEventListener('resize', moveMarker);
       })();
     </script>
     <script is:inline>
@@ -150,44 +159,86 @@ const personSchema = {
         if (!els.length) return;
         var reduceMotion =
           window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduceMotion) return; // server-rendered text already shows the final value
 
-        function animateCount(el) {
+        function finalText(el) {
           var target = parseFloat(el.getAttribute('data-count-to'));
           var suffix = el.getAttribute('data-count-suffix') || '';
           var decimals = parseInt(el.getAttribute('data-count-decimals') || '0', 10);
-          if (reduceMotion) {
-            el.textContent = target.toFixed(decimals) + suffix;
-            return;
-          }
-          var duration = 2200;
-          var start = null;
-          function step(ts) {
-            if (!start) start = ts;
-            var progress = Math.min((ts - start) / duration, 1);
-            var eased = 1 - Math.pow(1 - progress, 2);
-            el.textContent = (target * eased).toFixed(decimals) + suffix;
-            if (progress < 1) requestAnimationFrame(step);
-          }
-          requestAnimationFrame(step);
+          return target.toFixed(decimals) + suffix;
         }
 
+        function build(el) {
+          var text = finalText(el);
+          var wrap = document.createElement('span');
+          wrap.className = 'odo';
+          wrap.setAttribute('aria-hidden', 'true');
+          var cols = [];
+          text.split('').forEach(function (ch) {
+            if (ch >= '0' && ch <= '9') {
+              var col = document.createElement('span');
+              col.className = 'odo-col';
+              var strip = document.createElement('span');
+              strip.className = 'odo-strip';
+              for (var d = 0; d <= 9; d += 1) {
+                var digit = document.createElement('span');
+                digit.className = 'odo-digit';
+                digit.textContent = String(d);
+                strip.appendChild(digit);
+              }
+              col.appendChild(strip);
+              wrap.appendChild(col);
+              cols.push({ strip: strip, digit: Number(ch) });
+            } else {
+              var sep = document.createElement('span');
+              sep.className = 'odo-sep';
+              sep.textContent = ch === ' ' ? ' ' : ch;
+              wrap.appendChild(sep);
+            }
+          });
+          el.setAttribute('aria-label', text);
+          el.textContent = '';
+          el.appendChild(wrap);
+          return cols;
+        }
+
+        function roll(cols) {
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+              cols.forEach(function (c, i) {
+                c.strip.style.transitionDelay = i * 110 + 'ms';
+                c.strip.style.transform = 'translateY(-' + c.digit + 'em)';
+              });
+            });
+          });
+        }
+
+        var pending = [];
+        els.forEach(function (el) {
+          pending.push({ el: el, cols: build(el) });
+        });
+
         if (!('IntersectionObserver' in window)) {
-          els.forEach(animateCount);
+          pending.forEach(function (p) {
+            roll(p.cols);
+          });
           return;
         }
         var countObserver = new IntersectionObserver(
           function (entries) {
             entries.forEach(function (entry) {
               if (entry.isIntersecting) {
-                animateCount(entry.target);
+                pending.forEach(function (p) {
+                  if (p.el === entry.target) roll(p.cols);
+                });
                 countObserver.unobserve(entry.target);
               }
             });
           },
           { threshold: 0.4 }
         );
-        els.forEach(function (el) {
-          countObserver.observe(el);
+        pending.forEach(function (p) {
+          countObserver.observe(p.el);
         });
       })();
     </script>

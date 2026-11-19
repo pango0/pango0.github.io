@@ -12,7 +12,7 @@ function splitMetric(metric: string) {
 
 <section data-animate data-animate-delay="1" class="pt-1">
   <h2 class="text-3xl font-extrabold leading-[1.1] tracking-[-0.025em] text-ink sm:text-4xl lg:text-[2.875rem]">
-    HPC &amp; ML systems research.
+    <span class="mask-line"><span class="mask-inner">HPC &amp; ML systems research.</span></span>
   </h2>
   <p class="mt-5 max-w-[620px] text-base leading-relaxed text-body">
     Computer Science senior at National Taiwan University heading into an MSCS. I build and
@@ -30,12 +30,12 @@ function splitMetric(metric: string) {
               data-count-to={parts.value}
               data-count-suffix={parts.suffix}
               data-count-decimals={parts.decimals}
-              class="font-mono text-[27px] font-semibold tracking-tight text-ink"
+              class="font-mono text-[27px] font-semibold leading-none tracking-tight text-ink"
             >
-              {parts.decimals > 0 ? `0.${'0'.repeat(parts.decimals)}` : '0'}{parts.suffix}
+              {stat.value}
             </div>
           ) : (
-            <div class="font-mono text-[27px] font-semibold tracking-tight text-ink">{stat.value}</div>
+            <div class="font-mono text-[27px] font-semibold leading-none tracking-tight text-ink">{stat.value}</div>
           )}
           <div class="mt-1.5 text-[11px] font-semibold uppercase tracking-wide leading-snug text-muted">
             {stat.label}
